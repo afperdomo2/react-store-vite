@@ -1,20 +1,20 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
-  const activeStyle = "underline underline-offset-4";
+  const activeStyle = 'underline underline-offset-4';
   const filtersRoutes = [
-    "all",
-    "clothes",
-    "electronics",
-    "furnitures",
-    "toys",
-    "others",
+    'all',
+    'clothes',
+    'electronics',
+    'furnitures',
+    'toys',
+    'others',
   ];
 
   return (
-    <nav className="w-full flex justify-between items-center fixed z-10 py-5 px-5 text-sm font-light">
+    <nav className="fixed top-0 z-10 flex items-center justify-between w-full px-5 py-5 text-sm font-light bg-red-50">
       <ul className="flex items-center gap-4">
-        <li className="font-semibold text-lg">
+        <li className="text-lg font-semibold">
           <NavLink to="/">Shopi</NavLink>
         </li>
         {filtersRoutes.map((route) => (

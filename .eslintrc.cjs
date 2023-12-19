@@ -16,5 +16,6 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'react/prop-types': 'off', // Disabilitado porque el ESLint no reconoce el children de React
   },
-}
+};
