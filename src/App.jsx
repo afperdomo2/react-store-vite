@@ -1,9 +1,20 @@
 import "./App.css";
+import Home from "./pages/Home";
+import MyAccount from "./pages/MyAccount";
+import MyOrder from "./pages/MyOrder";
+import MyOrders from "./pages/MyOrders";
+import NotFound from "./pages/NotFound";
+import SignIn from "./pages/SignIn";
 
 function App() {
   return (
     <>
-      <div className="border border-red-500 bg-yellow-300">Hola mundo</div>
+      <Home />
+      <MyAccount />
+      <MyOrder />
+      <MyOrders />
+      <NotFound />
+      <SignIn />
     </>
   );
 }
