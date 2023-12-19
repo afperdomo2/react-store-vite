@@ -1,10 +1,23 @@
-import Card from '../../components/Card';
+import ProductCard from '../../components/ProductCard';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.escuelajs.co/api/v1/products')
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
+  }, []);
+
   return (
     <div>
       Home
-      <Card />
+      <div className="grid w-full max-w-screen-lg grid-cols-4 gap-4">
+        {products.map((product) => (
+          <ProductCard key={product.id} data={product} />
+        ))}
+      </div>
     </div>
   );
 };
