@@ -1,4 +1,6 @@
+import { PlusIcon } from '@heroicons/react/24/outline';
 import { useContext } from 'react';
+
 import { ShoppingCartContext } from '../context';
 
 const ProductCard = ({ data }) => {
@@ -9,7 +11,10 @@ const ProductCard = ({ data }) => {
   };
 
   return (
-    <div className="w-56 rounded-lg cursor-pointer bg-gray-50 h-60">
+    <div
+      onClick={() => context.showDetails()}
+      className="w-56 rounded-lg cursor-pointer bg-gray-50 h-60"
+    >
       <figure className="relative w-full mb-2 h-4/5">
         <span className="absolute bottom-0 left-0 px-2 py-0.5 m-2 text-xs text-black rounded-md bg-white/60">
           {data.category.name}
@@ -23,7 +28,7 @@ const ProductCard = ({ data }) => {
           onClick={addProductToCart}
           className="absolute top-0 right-0 flex justify-center w-6 h-6 m-2 bg-white rounded-full"
         >
-          +
+          <PlusIcon className="w-6 h-6 text-gray-500" />
         </div>
       </figure>
       <p className="flex justify-between px-2">

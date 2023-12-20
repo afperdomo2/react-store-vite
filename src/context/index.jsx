@@ -10,9 +10,21 @@ export const ShoppingCartContext = createContext();
  */
 export const ShoppingCartProvider = ({ children }) => {
   const [count, setCount] = useState(0);
+  const [showingDetails, setShowingDetails] = useState(false);
+
+  const showDetails = () => setShowingDetails(true);
+  const hideDetails = () => setShowingDetails(false);
 
   return (
-    <ShoppingCartContext.Provider value={{ count, setCount }}>
+    <ShoppingCartContext.Provider
+      value={{
+        count,
+        setCount,
+        showingDetails,
+        showDetails,
+        hideDetails,
+      }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );
