@@ -1,13 +1,14 @@
 import { BrowserRouter, useRoutes } from 'react-router-dom';
 import './App.css';
+import NavBar from './components/NavBar';
+import GlobalLayout from './components/layouts/GlobalLayout';
+import { ShoppingCartProvider } from './context';
 import Home from './pages/Home';
 import MyAccount from './pages/MyAccount';
 import MyOrder from './pages/MyOrder';
 import MyOrders from './pages/MyOrders';
 import NotFound from './pages/NotFound';
 import SignIn from './pages/SignIn';
-import NavBar from './components/NavBar';
-import GlobalLayout from './components/layouts/GlobalLayout';
 
 /**
  * Renderiza las rutas de la aplicación.
@@ -26,12 +27,14 @@ const AppRoutes = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <GlobalLayout>
-        <NavBar />
-        <AppRoutes />
-      </GlobalLayout>
-    </BrowserRouter>
+    <ShoppingCartProvider>
+      <BrowserRouter>
+        <GlobalLayout>
+          <NavBar />
+          <AppRoutes />
+        </GlobalLayout>
+      </BrowserRouter>
+    </ShoppingCartProvider>
   );
 };
 
