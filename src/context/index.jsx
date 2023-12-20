@@ -1,6 +1,6 @@
-import { createContext } from 'react';
+import { createContext, useState } from 'react';
 
-const ShoppingCartContext = createContext();
+export const ShoppingCartContext = createContext();
 
 /**
  * Proveedor del carrito de compras.
@@ -9,7 +9,11 @@ const ShoppingCartContext = createContext();
  * @returns {JSX.Element} El componente proveedor del carrito de compras.
  */
 export const ShoppingCartProvider = ({ children }) => {
+  const [count, setCount] = useState(0);
+
   return (
-    <ShoppingCartContext.Provider>{children}</ShoppingCartContext.Provider>
+    <ShoppingCartContext.Provider value={{ count, setCount }}>
+      {children}
+    </ShoppingCartContext.Provider>
   );
 };
