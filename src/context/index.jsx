@@ -9,11 +9,21 @@ export const ShoppingCartContext = createContext();
  * @returns {JSX.Element} El componente proveedor del carrito de compras.
  */
 export const ShoppingCartProvider = ({ children }) => {
+  // Shopping Cart
   const [count, setCount] = useState(0);
-  const [showingDetails, setShowingDetails] = useState(false);
 
-  const showDetails = () => setShowingDetails(true);
-  const hideDetails = () => setShowingDetails(false);
+  // Product Details
+  const [showingDetails, setShowingDetails] = useState(false);
+  const [productToShow, setProductToShow] = useState({});
+
+  const showProductDetails = (data) => {
+    setShowingDetails(true);
+    setProductToShow(data);
+  };
+  const hideProductDetails = () => {
+    setShowingDetails(false);
+    setProductToShow({});
+  };
 
   return (
     <ShoppingCartContext.Provider
@@ -21,8 +31,9 @@ export const ShoppingCartProvider = ({ children }) => {
         count,
         setCount,
         showingDetails,
-        showDetails,
-        hideDetails,
+        showProductDetails,
+        hideProductDetails,
+        productToShow,
       }}
     >
       {children}

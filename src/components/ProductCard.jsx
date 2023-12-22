@@ -12,7 +12,7 @@ const ProductCard = ({ data }) => {
 
   return (
     <div
-      onClick={() => context.showDetails()}
+      onClick={() => context.showProductDetails(data)}
       className="w-56 rounded-lg cursor-pointer bg-gray-50 h-60"
     >
       <figure className="relative w-full mb-2 h-4/5">
