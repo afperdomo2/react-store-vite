@@ -11,6 +11,7 @@ export const ShoppingCartContext = createContext();
 export const ShoppingCartProvider = ({ children }) => {
   // Shopping Cart
   const [count, setCount] = useState(0);
+  const [cartProducts, setCartProducts] = useState([]);
 
   // Product Details
   const [showingDetails, setShowingDetails] = useState(false);
@@ -34,6 +35,8 @@ export const ShoppingCartProvider = ({ children }) => {
         showProductDetails,
         hideProductDetails,
         productToShow,
+        cartProducts,
+        setCartProducts,
       }}
     >
       {children}

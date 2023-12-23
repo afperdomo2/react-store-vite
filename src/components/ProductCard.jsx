@@ -6,8 +6,10 @@ import { ShoppingCartContext } from '../context';
 const ProductCard = ({ data }) => {
   const context = useContext(ShoppingCartContext);
 
-  const addProductToCart = () => {
+  const addProductToCart = (data) => {
     context.setCount(context.count + 1);
+    context.setCartProducts([...context.cartProducts, data]);
+    console.log('cart:', context.cartProducts);
   };
 
   return (
