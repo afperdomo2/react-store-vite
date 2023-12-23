@@ -12,6 +12,10 @@ export const ShoppingCartProvider = ({ children }) => {
   // Shopping Cart
   const [count, setCount] = useState(0);
   const [cartProducts, setCartProducts] = useState([]);
+  const [isMenuCartOpen, setIsMenuCartOpen] = useState(false);
+
+  const openMenuCart = () => setIsMenuCartOpen(true);
+  const closeMenuCart = () => setIsMenuCartOpen(false);
 
   // Product Details
   const [showingDetails, setShowingDetails] = useState(false);
@@ -37,6 +41,9 @@ export const ShoppingCartProvider = ({ children }) => {
         productToShow,
         cartProducts,
         setCartProducts,
+        isMenuCartOpen,
+        openMenuCart,
+        closeMenuCart,
       }}
     >
       {children}

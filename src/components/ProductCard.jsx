@@ -6,15 +6,22 @@ import { ShoppingCartContext } from '../context';
 const ProductCard = ({ data }) => {
   const context = useContext(ShoppingCartContext);
 
-  const addProductToCart = (data) => {
+  const showProductDetails = (data) => {
+    context.closeMenuCart();
+    context.showProductDetails(data);
+  };
+
+  const addProductToCart = (event, data) => {
+    event.stopPropagation();
     context.setCount(context.count + 1);
     context.setCartProducts([...context.cartProducts, data]);
-    console.log('cart:', context.cartProducts);
+    context.hideProductDetails();
+    context.openMenuCart();
   };
 
   return (
     <div
-      onClick={() => context.showProductDetails(data)}
+      onClick={() => showProductDetails(data)}
       className="w-56 rounded-lg cursor-pointer bg-gray-50 h-60"
     >
       <figure className="relative w-full mb-2 h-4/5">
@@ -27,7 +34,7 @@ const ProductCard = ({ data }) => {
           alt={data.title}
         />
         <div
-          onClick={addProductToCart}
+          onClick={(event) => addProductToCart(event, data)}
           className="absolute top-0 right-0 flex justify-center w-6 h-6 m-2 bg-white rounded-full"
         >
           <PlusIcon className="w-6 h-6 text-gray-500" />

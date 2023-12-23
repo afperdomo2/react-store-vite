@@ -9,6 +9,7 @@ import MyOrder from './pages/MyOrder';
 import MyOrders from './pages/MyOrders';
 import NotFound from './pages/NotFound';
 import SignIn from './pages/SignIn';
+import MenuCart from './components/MenuCart';
 
 /**
  * Renderiza las rutas de la aplicación.
@@ -32,6 +33,7 @@ const App = () => {
         <GlobalLayout>
           <NavBar />
           <AppRoutes />
+          <MenuCart />
         </GlobalLayout>
       </BrowserRouter>
     </ShoppingCartProvider>
