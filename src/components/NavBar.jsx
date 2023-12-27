@@ -61,9 +61,16 @@ const NavBar = () => {
             Sign In
           </NavLink>
         </li>
-        <li className="flex">
-          <ShoppingBagIcon className="w-5 h-5 text-gray-400" />
-          {context.count}
+
+        <li>
+          <button
+            type="button"
+            className="flex"
+            onClick={context.toggleMenuCart}
+          >
+            <ShoppingBagIcon className="w-5 h-5 text-gray-400" />
+            {context.count}
+          </button>
         </li>
       </ul>
     </nav>

@@ -16,6 +16,7 @@ export const ShoppingCartProvider = ({ children }) => {
 
   const openMenuCart = () => setIsMenuCartOpen(true);
   const closeMenuCart = () => setIsMenuCartOpen(false);
+  const toggleMenuCart = () => setIsMenuCartOpen(!isMenuCartOpen);
 
   // Product Details
   const [showingDetails, setShowingDetails] = useState(false);
@@ -44,6 +45,7 @@ export const ShoppingCartProvider = ({ children }) => {
         isMenuCartOpen,
         openMenuCart,
         closeMenuCart,
+        toggleMenuCart,
       }}
     >
       {children}

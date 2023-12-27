@@ -1,7 +1,8 @@
-import { PlusIcon } from '@heroicons/react/24/outline';
+import { CheckIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { useContext } from 'react';
 
 import { ShoppingCartContext } from '../context';
+import '../css/ProductCard.css';
 
 const ProductCard = ({ data }) => {
   const context = useContext(ShoppingCartContext);
@@ -19,6 +20,24 @@ const ProductCard = ({ data }) => {
     context.openMenuCart();
   };
 
+  const renderIcon = (productId) => {
+    const isProductInCart = context.cartProducts.some(
+      ({ id }) => id === productId
+    );
+    return isProductInCart ? (
+      <div className="bg-green-500 btn-add-to-cart">
+        <CheckIcon className="w-6 h-6 text-white" />
+      </div>
+    ) : (
+      <div
+        onClick={(event) => addProductToCart(event, data)}
+        className="bg-white btn-add-to-cart"
+      >
+        <PlusIcon className="w-6 h-6 text-gray-500" />
+      </div>
+    );
+  };
+
   return (
     <div
       onClick={() => showProductDetails(data)}
@@ -33,13 +52,21 @@ const ProductCard = ({ data }) => {
           src={data?.images[0]}
           alt={data.title}
         />
-        <div
-          onClick={(event) => addProductToCart(event, data)}
+        {renderIcon(data.id)}
+        {/* <div
+          onClick={(event) =>
+            isProductInCart(data.id) ? addProductToCart(event, data) : null
+          }
           className="absolute top-0 right-0 flex justify-center w-6 h-6 m-2 bg-white rounded-full"
         >
-          <PlusIcon className="w-6 h-6 text-gray-500" />
-        </div>
+          {isProductInCart(data.id) ? (
+            <CheckIcon className="w-6 h-6 text-gray-500" />
+          ) : (
+            <PlusIcon className="w-6 h-6 text-gray-500" />
+          )}
+        </div> */}
       </figure>
+
       <p className="flex justify-between px-2">
         <span className="text-sm font-light">{data.title}</span>
         <span className="text-lg font-medium">${data.price}</span>
