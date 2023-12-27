@@ -10,7 +10,7 @@ const ProductDetail = () => {
     <aside
       className={`${
         context.showingDetails ? 'flex' : 'hidden'
-      } w-[300px] h-[calc(100vh-68px)] flex-col fixed bg-white right-0 top-[68px] border-l border-gray-100 shadow-2xl`}
+      } w-[350px] h-[calc(100vh-68px)] flex-col fixed bg-white right-0 top-[68px] border-l border-gray-100 shadow-2xl`}
     >
       <div className="flex items-center justify-between p-6">
         <h2 className="text-xl font-medium">Details</h2>
@@ -18,6 +18,7 @@ const ProductDetail = () => {
           <XMarkIcon className="w-6 h-6 text-gray-500" />
         </button>
       </div>
+
       <figure className="px-6">
         <img
           className="w-full h-full rounded-lg"
@@ -25,6 +26,7 @@ const ProductDetail = () => {
           alt={context.productToShow.title}
         />
       </figure>
+
       <p className="flex flex-col px-6 pt-4">
         <span className="mb-2 text-2xl font-medium">
           ${context.productToShow.price}
