@@ -7,6 +7,13 @@ import OrderCard from './OrderCard';
 const MenuCart = () => {
   const context = useContext(ShoppingCartContext);
 
+  const handleDelete = (id) => {
+    const newCartProducts = context.cartProducts.filter(
+      (product) => product.id !== id
+    );
+    context.setCartProducts(newCartProducts);
+  };
+
   return (
     <aside
       className={`${
@@ -24,9 +31,11 @@ const MenuCart = () => {
         {context.cartProducts.map((product) => (
           <OrderCard
             key={product.id}
+            id={product.id}
             title={product.title}
             imageUrl={product.images[0]}
             price={product.price}
+            handleDelete={handleDelete}
           />
         ))}
       </div>
