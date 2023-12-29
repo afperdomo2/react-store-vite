@@ -16,11 +16,11 @@ const OrderCard = ({ id, title, imageUrl, price, handleDelete }) => {
           <p className="text-sm font-light">{title}</p>
           <TrashIcon
             onClick={() => handleDelete(id)}
-            className="w-5 h-5 text-gray-700 rounded-lg cursor-pointer hover:bg-red-100 hover:shadow-lg"
+            className="w-5 h-5 text-red-500 rounded-lg cursor-pointer hover:bg-red-100 hover:shadow-lg"
           />
         </div>
 
-        <div className="text-right text-green-600">
+        <div className="text-right text-gray-600">
           <p className="text-lg font-medium">$ {price}</p>
         </div>
       </div>
