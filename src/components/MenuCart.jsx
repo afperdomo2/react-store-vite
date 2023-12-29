@@ -3,6 +3,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { ShoppingCartContext } from '../context';
 import OrderCard from './OrderCard';
+import { totalPrice } from '../utils';
 
 const MenuCart = () => {
   const context = useContext(ShoppingCartContext);
@@ -27,7 +28,7 @@ const MenuCart = () => {
         </button>
       </div>
 
-      <div className="px-6 overflow-y-scroll">
+      <div className="px-6 overflow-y-auto">
         {context.cartProducts.map((product) => (
           <OrderCard
             key={product.id}
@@ -38,6 +39,19 @@ const MenuCart = () => {
             handleDelete={handleDelete}
           />
         ))}
+      </div>
+
+      <div className="px-6 mt-4 border-t-2 bg-gray-50">
+        <div className="flex items-center justify-between py-4">
+          <p className="text-lg font-medium">Total</p>
+          <p className="text-xl font-medium text-green-600">
+            $ {totalPrice(context.cartProducts)}
+          </p>
+        </div>
+
+        <button className="w-full py-2 font-medium text-white bg-green-600 rounded-lg">
+          Checkout
+        </button>
       </div>
     </aside>
   );
