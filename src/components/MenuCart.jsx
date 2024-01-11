@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { ShoppingCartContext } from '../context';
@@ -19,11 +20,12 @@ const MenuCart = () => {
     const orderToAdd = {
       date: Date.now(),
       products: context.cartProducts,
-      total: totalPrice(context.cartProducts),
-      count: context.cartProducts.length,
+      totalAmount: context.cartProducts.length,
+      totalPrice: totalPrice(context.cartProducts),
     };
     context.setOrder([...context.order, orderToAdd]);
     context.setCartProducts([]);
+    context.closeMenuCart();
   };
 
   return (
@@ -62,12 +64,14 @@ const MenuCart = () => {
               </p>
             </div>
 
-            <button
-              onClick={() => handleCheckout()}
-              className="w-full py-2 font-medium text-white bg-green-600 rounded-lg"
-            >
-              Checkout
-            </button>
+            <Link to="/my-orders/last">
+              <button
+                onClick={() => handleCheckout()}
+                className="w-full py-2 font-medium text-white bg-green-600 rounded-lg"
+              >
+                Checkout
+              </button>
+            </Link>
           </div>
         </>
       ) : (

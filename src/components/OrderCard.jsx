@@ -14,10 +14,12 @@ const OrderCard = ({ id, title, imageUrl, price, handleDelete }) => {
       <div className="flex flex-col justify-between w-full h-16 pl-2">
         <div className="flex justify-between ">
           <p className="text-sm font-light">{title}</p>
-          <TrashIcon
-            onClick={() => handleDelete(id)}
-            className="w-5 h-5 text-red-500 rounded-lg cursor-pointer hover:bg-red-100 hover:shadow-lg"
-          />
+          {handleDelete && (
+            <TrashIcon
+              onClick={() => handleDelete(id)}
+              className="w-5 h-5 text-red-500 rounded-lg cursor-pointer hover:bg-red-100 hover:shadow-lg"
+            />
+          )}
         </div>
 
         <div className="text-right text-gray-600">

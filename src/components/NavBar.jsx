@@ -9,7 +9,6 @@ const NavBar = () => {
 
   const activeStyle = 'underline underline-offset-4';
   const filtersRoutes = [
-    'all',
     'clothes',
     'electronics',
     'furnitures',
@@ -23,6 +22,15 @@ const NavBar = () => {
         <li className="text-lg font-semibold">
           <NavLink to="/">Shopi</NavLink>
         </li>
+        <li className="">
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? activeStyle : undefined)}
+          >
+            all
+          </NavLink>
+        </li>
+
         {filtersRoutes.map((route) => (
           <li key={route}>
             <NavLink
