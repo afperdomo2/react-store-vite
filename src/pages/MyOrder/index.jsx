@@ -1,7 +1,9 @@
 import { useContext } from 'react';
+import { ChevronLeftIcon } from '@heroicons/react/24/outline';
+import { Link } from 'react-router-dom';
 
 import { ShoppingCartContext } from '../../context';
-import OrderCard from '../../components/OrderCard';
+import OrderCard from '../../components/OrderProductCard';
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext);
@@ -10,7 +12,16 @@ function MyOrder() {
 
   return (
     <div className="w-96">
-      <div className="mb-4 text-center">MyOrder</div>
+      <div className="flex justify-between mb-4 text-center text-gray-700">
+        <Link to="/my-orders">
+          <ChevronLeftIcon className="w-5 mt-1 rounded-sm hover:bg-gray-50" />
+        </Link>
+
+        <span className="border">My Order</span>
+
+        <span />
+      </div>
+
       <div className="flex flex-col ">
         {lastOrder?.products.map((product) => (
           <OrderCard

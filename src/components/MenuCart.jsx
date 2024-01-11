@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { ShoppingCartContext } from '../context';
-import OrderCard from './OrderCard';
+import OrderCard from './OrderProductCard';
 import { totalPrice } from '../utils';
 
 const MenuCart = () => {
