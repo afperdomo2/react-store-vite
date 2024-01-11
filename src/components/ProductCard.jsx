@@ -14,7 +14,6 @@ const ProductCard = ({ data }) => {
 
   const addProductToCart = (event, data) => {
     event.stopPropagation();
-    context.setCount(context.count + 1);
     context.setCartProducts([...context.cartProducts, data]);
     context.hideProductDetails();
     context.openMenuCart();
@@ -53,18 +52,6 @@ const ProductCard = ({ data }) => {
           alt={data.title}
         />
         {renderIcon(data.id)}
-        {/* <div
-          onClick={(event) =>
-            isProductInCart(data.id) ? addProductToCart(event, data) : null
-          }
-          className="absolute top-0 right-0 flex justify-center w-6 h-6 m-2 bg-white rounded-full"
-        >
-          {isProductInCart(data.id) ? (
-            <CheckIcon className="w-6 h-6 text-gray-500" />
-          ) : (
-            <PlusIcon className="w-6 h-6 text-gray-500" />
-          )}
-        </div> */}
       </figure>
 
       <p className="flex justify-between px-2">

@@ -15,6 +15,17 @@ const MenuCart = () => {
     context.setCartProducts(newCartProducts);
   };
 
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: Date.now(),
+      products: context.cartProducts,
+      total: totalPrice(context.cartProducts),
+      count: context.cartProducts.length,
+    };
+    context.setOrder([...context.order, orderToAdd]);
+    context.setCartProducts([]);
+  };
+
   return (
     <aside
       className={`${
@@ -30,7 +41,7 @@ const MenuCart = () => {
 
       {context.cartProducts.length > 0 ? (
         <>
-          <div className="px-6 overflow-y-auto">
+          <div className="flex-1 px-6 overflow-y-auto">
             {context.cartProducts.map((product) => (
               <OrderCard
                 key={product.id}
@@ -43,7 +54,7 @@ const MenuCart = () => {
             ))}
           </div>
 
-          <div className="px-6 mt-3 border-t-2 bg-gray-50">
+          <div className="px-6 my-3 border-t-2 bg-gray-50">
             <div className="flex items-center justify-between py-4">
               <p className="text-lg font-medium">Total</p>
               <p className="text-xl font-medium text-green-600">
@@ -51,7 +62,10 @@ const MenuCart = () => {
               </p>
             </div>
 
-            <button className="w-full py-2 font-medium text-white bg-green-600 rounded-lg">
+            <button
+              onClick={() => handleCheckout()}
+              className="w-full py-2 font-medium text-white bg-green-600 rounded-lg"
+            >
               Checkout
             </button>
           </div>
