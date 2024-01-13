@@ -1,10 +1,11 @@
+import { XMarkIcon } from '@heroicons/react/24/outline';
+import moment from 'moment';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { ShoppingCartContext } from '../context';
-import OrderCard from './OrderProductCard';
 import { totalPrice } from '../utils';
+import OrderCard from './OrderProductCard';
 
 const MenuCart = () => {
   const context = useContext(ShoppingCartContext);
@@ -18,7 +19,7 @@ const MenuCart = () => {
 
   const handleCheckout = () => {
     const orderToAdd = {
-      date: Date.now(),
+      date: moment().format('DD/MM/YY hh:mm a'),
       products: context.cartProducts,
       totalAmount: context.cartProducts.length,
       totalPrice: totalPrice(context.cartProducts),

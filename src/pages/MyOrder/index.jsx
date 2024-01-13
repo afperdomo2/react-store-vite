@@ -1,29 +1,31 @@
-import { useContext } from 'react';
 import { ChevronLeftIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
-import { ShoppingCartContext } from '../../context';
 import OrderCard from '../../components/OrderProductCard';
+import { ShoppingCartContext } from '../../context';
 
 function MyOrder() {
   const context = useContext(ShoppingCartContext);
+  const { id } = useParams();
 
-  const lastOrder = context.order?.slice(-1)[0] ?? {};
+  const selectedOrder =
+    id === 'last' ? context.order?.slice(-1)[0] : context.order[id];
 
   return (
-    <div className="w-96">
+    <div className="xl:w-6/12 lg:w-8/12">
       <div className="flex justify-between mb-4 text-center text-gray-700">
         <Link to="/my-orders">
           <ChevronLeftIcon className="w-5 mt-1 rounded-sm hover:bg-gray-50" />
         </Link>
 
-        <span className="border">My Order</span>
+        <span>My Order</span>
 
         <span />
       </div>
 
       <div className="flex flex-col ">
-        {lastOrder?.products.map((product) => (
+        {selectedOrder?.products.map((product) => (
           <OrderCard
             key={product.id}
             id={product.id}
@@ -38,7 +40,7 @@ function MyOrder() {
         <div className="flex items-center justify-between py-4">
           <p className="text-lg font-medium">Total</p>
           <p className="text-xl font-medium text-green-600">
-            $ {lastOrder?.totalPrice}
+            $ {selectedOrder?.totalPrice}
           </p>
         </div>
       </div>
