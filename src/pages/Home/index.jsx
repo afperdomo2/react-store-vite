@@ -1,21 +1,26 @@
+import { useContext } from 'react';
 import ProductCard from '../../components/ProductCard';
-import { useState, useEffect } from 'react';
 import ProductDetail from '../../components/ProductDetail';
+import { ShoppingCartContext } from '../../context';
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products')
-      .then((response) => response.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const context = useContext(ShoppingCartContext);
 
   return (
     <div>
-      Home
+      <div className="mb-3 text-center text-gray-700">
+        <h1 className="text-2xl font-medium">Exclusive Products</h1>
+      </div>
+
+      <input
+        type="text"
+        className="p-3 mb-4 border border-black rounded-md w-80 focus:outline-none"
+        onChange={(e) => e.target.value}
+        placeholder="Search a product..."
+      />
+
       <div className="grid w-full max-w-screen-lg grid-cols-4 gap-4">
-        {products.map((product) => (
+        {context.products.map((product) => (
           <ProductCard key={product.id} data={product} />
         ))}
       </div>

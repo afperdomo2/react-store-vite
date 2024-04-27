@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const ShoppingCartContext = createContext();
 
@@ -9,6 +9,15 @@ export const ShoppingCartContext = createContext();
  * @returns {JSX.Element} El componente proveedor del carrito de compras.
  */
 export const ShoppingCartProvider = ({ children }) => {
+  // Products
+  const [products, setProducts] = useState([]);
+  //const [searchByTitle, setSearchByTitle] = useState([]);
+  useEffect(() => {
+    fetch('https://api.escuelajs.co/api/v1/products')
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
+  }, []);
+
   // Shopping Cart
   const [cartProducts, setCartProducts] = useState([]);
   const [isMenuCartOpen, setIsMenuCartOpen] = useState(false);
@@ -48,6 +57,8 @@ export const ShoppingCartProvider = ({ children }) => {
         toggleMenuCart,
         order,
         setOrder,
+        products,
+        setProducts,
       }}
     >
       {children}
