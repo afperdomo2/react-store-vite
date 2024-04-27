@@ -9,14 +9,30 @@ export const ShoppingCartContext = createContext();
  * @returns {JSX.Element} El componente proveedor del carrito de compras.
  */
 export const ShoppingCartProvider = ({ children }) => {
-  // Products
-  const [products, setProducts] = useState([]);
-  //const [searchByTitle, setSearchByTitle] = useState([]);
+  // Get Products from API
+  const [productsFetch, setProductsFetch] = useState([]);
   useEffect(() => {
     fetch('https://api.escuelajs.co/api/v1/products')
       .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProductsFetch(data);
+        setProducts(data);
+      });
   }, []);
+
+  // Products
+  const [products, setProducts] = useState([]);
+
+  const searchProducts = (search) => {
+    setSearch(search);
+    const filteredProducts = productsFetch.filter((product) =>
+      product.title.toLowerCase().includes(search.toLowerCase())
+    );
+    setProducts(filteredProducts);
+  };
+
+  // Searchs
+  const [search, setSearch] = useState('');
 
   // Shopping Cart
   const [cartProducts, setCartProducts] = useState([]);
@@ -58,7 +74,10 @@ export const ShoppingCartProvider = ({ children }) => {
         order,
         setOrder,
         products,
-        setProducts,
+        productsFetch,
+        setProductsFetch,
+        search,
+        searchProducts,
       }}
     >
       {children}
