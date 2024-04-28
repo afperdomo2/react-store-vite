@@ -25,6 +25,7 @@ const NavBar = () => {
         <li className="">
           <NavLink
             to="/"
+            onClick={() => context.filterByCategory('all')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             all
@@ -35,6 +36,7 @@ const NavBar = () => {
           <li key={route}>
             <NavLink
               to={`/${route}`}
+              onClick={() => context.filterByCategory(route)}
               className={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
               {route.charAt(0).toUpperCase() + route.slice(1)}

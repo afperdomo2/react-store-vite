@@ -20,13 +20,11 @@ const Home = () => {
           placeholder="Search a product..."
         />
 
-        {context.search !== '' && (
-          <div className="flex flex-col justify-end w-2/3 mb-1 font-semibold text-right text-gray-600">
-            <span className="text-sm">
-              {context.products.length} productos encontrados
-            </span>
-          </div>
-        )}
+        <div className="flex flex-col justify-end w-2/3 mb-1 font-semibold text-right text-gray-600">
+          <span className="text-sm">
+            {context.products.length} productos encontrados
+          </span>
+        </div>
       </div>
 
       <div className="grid w-full max-w-screen-lg grid-cols-4 gap-4 text-left">
